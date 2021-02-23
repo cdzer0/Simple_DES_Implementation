@@ -65,8 +65,10 @@ def dec2bin(num):
 
 def pt2hex(message, retdict):
 	t1 = ""
+	retdict["extra"] = 0
 	if len(message) % 8 != 0:
-		extra = len(message)%8
+		extra = 8 - len(message)%8
+		retdict["extra"] = extra
 		while extra:
 			message += "0"
 			extra -= 1
