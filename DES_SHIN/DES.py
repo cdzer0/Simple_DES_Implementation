@@ -1,8 +1,9 @@
 import All_Conversions as ac
 import All_Functions as af
 
-key = "e1287a90b6cf35d4" #Some hex value
-PlainText = "Hi this is trial and hope this works"
+#key = "e1287a90b6cf35d4" #Some hex value
+key = af.GenerateKey()
+PlainText = str(input("Enter a Plaintext : "))
 CipherText = ""
 
 returned_pt_val = {}
@@ -99,10 +100,10 @@ for i in range(0, len(returned_pt_val['b']), 64):
         CT += ac.bin2hex(ch)
     #print("CT for " + inv_final_block_str + " is : " + CT + "\n")
     CipherText += CT
-print("\nCipherText is : " + CipherText + "\n")
+print("CipherText is : " + CipherText + "\n")
 
-for i in range(16):
-    print("Key for round " + str(i) + " is : " +  key_dict[i])
+# for i in range(16):
+#     print("Key for round " + str(i) + " is : " +  key_dict[i])
 
 #******** DECRYPTION ********#
 d_returned_key_val = {}
@@ -115,13 +116,13 @@ RPlainText = ""
 #******** START OF DECRYPTION ********#
 for i in range(0, len(CipherText), 16):
     d_block = CipherText[i:i+16]
-    print("D_Block " + str(int(i/16) + 1) + " is : " + d_block)
+    # print("D_Block " + str(int(i/16) + 1) + " is : " + d_block)
     bin_d_block = ""
     for i in range(len(d_block)):
         bin_d_block += ac.hex2bin(d_block[i])
-    print("bin_d_block for D_Block " + d_block + " is : " + bin_d_block)
+    # print("bin_d_block for D_Block " + d_block + " is : " + bin_d_block)
     bin_d_block_str = af.permuteThree(bin_d_block)
-    print("bin_d_block_str is : " + bin_d_block_str)
+    # print("bin_d_block_str is : " + bin_d_block_str)
     d_final_block_str = ""
     d_inv_final_block_str = ""
 
@@ -140,17 +141,18 @@ for i in range(0, len(CipherText), 16):
         #print("#ROUND " + str(j+1) + " Ended. \n")
 
     d_final_block_str = d_returned_block_val['r'] + d_returned_block_val['l']
-    print("d_final_block_str is : " + d_final_block_str)
+    # print("d_final_block_str is : " + d_final_block_str)
     d_inv_final_block_str = af.permuteFive(d_final_block_str)
-    print("d_inv_final_block_str is : " + d_inv_final_block_str)
+    # print("d_inv_final_block_str is : " + d_inv_final_block_str)
 
     PT = ""
     for a in range(0,len(d_inv_final_block_str),8):
         ch = d_inv_final_block_str[a:a+8]
-        print("ch is : " + ch)
+        # print("ch is : " + ch)
         num = ac.bin2dec(int(ch))
-        print("num is : " + str(num))
+        # print("num is : " + str(num))
         PT += chr(num)
-    print("PT for " + d_inv_final_block_str + " is : " + PT + "\n")
+    # print("PT for " + d_inv_final_block_str + " is : " + PT + "\n")
     RPlainText += PT
+RPlainText = RPlainText[:len(RPlainText)-returned_pt_val['extra']]
 print("\nRecovered PlainText is : " + RPlainText + "\n")
