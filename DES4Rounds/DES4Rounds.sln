@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "DES4Rounds", "DES4Rounds\DES4Rounds.pyproj", "{E70C834B-3D64-4512-9105-8ED48F75ACA7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E70C834B-3D64-4512-9105-8ED48F75ACA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E70C834B-3D64-4512-9105-8ED48F75ACA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34A85A12-9643-436F-BAA0-EA23CB1F517B}
+	EndGlobalSection
+EndGlobal
